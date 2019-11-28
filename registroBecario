@@ -1,0 +1,207 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="Incripcion">
+            <f:facet name="header">
+                Formulario de inscripción de intereasados
+            </f:facet>
+            <p:separator/>Datos generales <p:separator/>
+            <p:panelGrid columns="2" >
+
+                <p:panelGrid columns="2" >
+                    <h:outputLabel value="Ambito: " for="cmbAmbito" />
+                    <p:selectOneMenu id="cmbAmbito" value="}" style="width:125px" required="true">
+                        <f:selectItem itemLabel="Seleccione" itemValue="" />
+                        <f:selectItem itemLabel="ambito" itemValue="ambito" />
+
+                    </p:selectOneMenu>  
+
+                    <h:outputLabel value="Primer Nombre: " for="txtNombre" />
+
+                    <p:inputText id="txtNombre" value="" required="true" />
+
+                    <h:outputLabel value="Tercer Nombre: " for="txtNombre3" />
+                    <p:inputText id="txtNombre3" value="" required="true" />
+
+                    <h:outputLabel value="Segundo Apellido: " for="txtapellido2" />
+                    <p:inputText id="txtapellido2" value="" />
+
+                    <h:outputLabel value="N° Dui: " for="txtDui" />
+                    <p:inputText id="txtDui" value="" />
+
+                    <h:outputLabel value="Edad: " for="txtEdad" />
+                    <p:inputText id="txtEdad" value="" disabled="true"/>
+
+                    <h:outputLabel value="Estado Civil: " for="cmbEstadoCivil" />
+                    <p:selectOneMenu id="cmbEstadoCivil" value="}" style="width:225px" required="true">
+                        <f:selectItem itemLabel="Seleccione Estado Civil " itemValue="" />
+                        <f:selectItem itemLabel="Casado" itemValue="Casado" />
+                        <f:selectItem itemLabel="Soltero" itemValue="Soltero" />
+
+                    </p:selectOneMenu>  
+
+                    <h:outputLabel value="Direccion exacta donde vive: " for="txtDireccion" />
+                    <p:inputText id="txtEdad" value="" />
+
+                    <h:outputLabel value="Municipio: " for="cmbMunicipio" />
+                    <p:selectOneMenu id="cmbMunicipio" value="}" style="width:125px" required="true">
+                        <f:selectItem itemLabel="Seleccione" itemValue="" />
+                        <f:selectItem itemLabel="san salvador" itemValue="san salvador" />
+
+                    </p:selectOneMenu>  
+
+                    <h:outputLabel value="Canton: " for="txtCanton" />
+                    <p:inputText id="txtCanton" value="" />
+
+                    <h:outputLabel value="Celular: " for="txtCelular" />
+                    <p:inputText id="txtCelular" value="" />
+
+                </p:panelGrid>
+
+                <p:panelGrid columns="2" >
+
+                    <h:outputLabel value="Convocatoria: " for="cmbConvovcatoria" />
+                    <p:selectOneMenu id="cmbConvovcatoria" value="}" style="width:125px" required="true">
+                        <f:selectItem itemLabel="Seleccione" itemValue="" />
+                        <f:selectItem itemLabel="convocatoria" itemValue="convocatoria" />
+
+                    </p:selectOneMenu>  
+
+                    <h:outputLabel value="Segundo Nombre: " for="txtNombre2" />
+                    <p:inputText id="txtNombre2" value="" required="true"/>
+
+                    <h:outputLabel value="Primer Apellido: " for="txtApellido1" />
+                    <p:inputText id="txtApellido1" value="" required="true"/>
+
+                    <h:outputLabel value="Apellido Casada: " for="txtApellidoCasa" />
+                    <p:inputText id="txtApellidoCasa" value="" required="true"/>
+
+                    <h:outputLabel value="No. NIT: " for="txtNit" />
+                    <p:inputText id="txtNit" value="" />
+
+                    <h:outputText value="Fecha Nacimiento:" />
+                    <p:calendar showOn="button">
+
+                    </p:calendar>
+
+
+                    <h:outputLabel value="Sexo: " for="cmbSexo" />
+                    <p:selectOneMenu id="cmbSexo" value="" style="width:125px" required="true">
+                        <f:selectItem itemLabel="Masculino" itemValue="M" />
+                        <f:selectItem itemLabel="Femenino" itemValue="F" />
+                        <f:selectItem itemLabel="Otro" itemValue="o" />
+                    </p:selectOneMenu>  
+
+                    <h:outputLabel value="N° Hijos: " for="txtHijos" />
+                    <p:spinner id="txtHijos" value="" min="0"  />
+
+                    <h:outputLabel value="Departamento " for="cmbDepartamento" />
+                    <p:selectOneMenu id="cmbDepartamento" value="}" style="width:125px" required="true">
+                        <f:selectItem itemLabel="Seleccione" itemValue="" />
+                        <f:selectItem itemLabel="san salvador" itemValue="san salvador" />
+
+                    </p:selectOneMenu>  
+
+                    <h:outputLabel value="Ciudad: " for="txtCiudad" />
+                    <p:inputText id="txtCiudad" value="" required="true"/>
+
+
+
+                    <h:outputLabel value="Teléfono fijo: " for="txtTelFijo" />
+                    <p:inputText id="txtTelFijo" value="" />
+
+                    <h:outputLabel value="Correo Electronico " for="txtCorreo" />
+                    <p:inputText id="txtCorreo" value="" />
+
+                </p:panelGrid>
+
+            </p:panelGrid>
+
+            <p:separator/>Datos generales <p:separator/>
+            <p:panelGrid columns="2" >
+
+                <p:panelGrid columns="2" >
+                    <h:outputLabel value="Comunicar Con: " for="txtComunicarCon" />
+                    <p:inputText id="txtComunicarCon" value="" />
+
+                    <h:outputLabel value="N° Telefono" for="txtTelefono" />
+                    <p:inputText id="txtTelefono" value="" />
+
+                    <h:outputLabel value="Direccion de vivienda:" for="txtDireccionVivienda" />
+                    <p:inputText id="txtDireccionVivienda" value="" />
+
+                </p:panelGrid>
+
+                <p:panelGrid columns="2" >
+                    <h:outputLabel value="Parentesco: " for="txtComunicarCon" />
+                    <p:inputText id="txtComunicarCon" value="" />
+
+                    <h:outputLabel value="CorreoElectronico" for="txtCorreoElectronico" />
+                    <p:inputText id="txtCorreoElectronico" value="" />
+
+
+                </p:panelGrid>
+
+            </p:panelGrid>
+
+
+            <p:separator/>Antecedentes<p:separator/>
+            <p:panelGrid columns="2" >
+
+                <h:outputLabel value="¿Anterio mente ha aplicado a una BECA FANTEL?: " for="cbmBecaFantel" />
+                <p:selectOneMenu id="cbmBecaFantel" value="}" style="width:125px" required="true">
+                    <f:selectItem itemLabel="Seleccione" itemValue="" />
+                    <f:selectItem itemLabel="Si" itemValue="Si" />
+                    <f:selectItem itemLabel="No" itemValue="No" />
+
+                </p:selectOneMenu> 
+                <h:outputLabel value="En que Año aplico: " for="cmbAnioAplico" />
+                <p:selectOneMenu id="cmbAnioAplico" value="}" style="width:125px" required="true">
+                    <f:selectItem itemLabel="Seleccione" itemValue="" />
+                    <f:selectItem itemLabel="2019" itemValue="2019" />
+
+                </p:selectOneMenu> 
+                
+                <h:outputLabel value="¿Tiene Familiares becados por el programa de BECAS FANTEL? " for="cmbTieneBecados" />
+                <p:selectOneMenu id="cmbTieneBecados" value="}" style="width:125px" required="true">
+                    <f:selectItem itemLabel="Seleccione" itemValue="" />
+                    <f:selectItem itemLabel="Si" itemValue="Si" />
+                    <f:selectItem itemLabel="No" itemValue="No" />
+
+                </p:selectOneMenu> 
+                
+                   <h:outputLabel value="Espesifique Quien:" for="txtEpesifique" />
+                    <p:inputText id="txtEpesifique" value="" />
+
+                    <h:outputLabel value="¿Unidad donde desea realizar sus estudios? " for="cmbEstudios" />
+                <p:selectOneMenu id="cmbEstudios" value="}" style="width:125px" required="true">
+                    <f:selectItem itemLabel="Seleccione" itemValue="" />
+                    <f:selectItem itemLabel="Universidad de  El Salvador" itemValue="UES" />
+                 
+
+                </p:selectOneMenu> 
+                
+                    <h:outputLabel value="¿Carrera de interes a estudiar? " for="cbmCarreInteres" />
+                <p:selectOneMenu id="cbmCarreInteres" value="}" style="width:125px" required="true">
+                    <f:selectItem itemLabel="Seleccione" itemValue="" />
+                    <f:selectItem itemLabel="Sistemas" itemValue="Sistemas" />
+                    <f:selectItem itemLabel="No" itemValue="No" />
+
+                </p:selectOneMenu> 
+                
+
+            </p:panelGrid>
+
+
+
+        </h:form>
+    </h:body>
+</html>
+
