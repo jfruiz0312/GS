@@ -1,0 +1,230 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns = "http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+          >
+
+        <h:form id="InscripcionBecariosFrm">
+            <p:panel>
+
+                <p:tabView scrollable="true"> 
+                    <p:tab title="1. Part I Fernando">
+                        <p:separator/> Part I Fernando<p:separator/> 
+
+                    </p:tab>
+                    <p:tab title="2. Part II Fernando">
+                        <p:separator/>Part II Fernando <p:separator/> 
+                    </p:tab>
+                    <p:tab title="3. Part III Fernando">
+                        <p:separator/>Part III Fernando <p:separator/> 
+                    </p:tab>
+                    <p:tab title="4. Part IV Fernando">
+                        <p:separator/>Part IV Fernando <p:separator/> 
+                    </p:tab>
+
+
+                    <p:tab title="5. Historial académico">
+                        <p:separator/>ESTUDIOS DE GRADO <p:separator/> 
+
+                        <p:commandButton id="btnAdd" icon="fa fa-plus-circle" 
+                                         value="Agregar estudios de grado"  action="#{esgEstudioGradoController.prepararCrear()}"
+                                         update=":EstudioGradoCreateFrm" oncomplete="PF('EstudioGradoCreateDialog').show()" >
+                        </p:commandButton>
+                        <p:dataTable id="grdEstudios" var="item" value="#{esgEstudioGradoController.items}"  scrollable="true" scrollHeight="150" >
+                            <p:column width="30%" headerText="Nombre de la institución educativa de procedencia" >
+                                <h:outputText value="#{item.esgNombreInstitucion}" />
+                            </p:column>
+                            <p:column width="20%" headerText="Título obtenido" >
+                                <h:outputText value="#{item.esgTitulo}" />
+                            </p:column>
+                            <p:column width="10%" headerText="Año de graduación" >
+                                <h:outputText value="#{item.esgAnoGraduacion}" />
+                            </p:column>
+                            <p:column width="10%" headerText="Promedio de PAES" >
+                                <h:outputText value="#{item.esgPromedioNotas}" />
+                            </p:column>
+                            <p:column width="10%" headerText="Notas PAES" >
+                                <h:outputText value="#{item.esgNotaPaes}"/>
+                            </p:column>
+                            <p:column width="10%" headerText="Año de PAES" >
+                                <h:outputText value="#{item.esgAnoPaes}"/>
+                            </p:column>
+                            <p:column width="12%" style="text-align: center" headerText="Acciones" >
+                                <p:commandLink  process="@this" update="grdEstudios" >
+                                    <span class="fa fa-trash" />
+                                    <p:collector value="#{item}" removeFrom="#{esgEstudioGradoController.items}" unique="true" />
+                                </p:commandLink>
+                            </p:column>
+                        </p:dataTable>
+
+                        <p:separator/>ESTUDIOS QUE ESTA CURSANDO ACTUALMENTE <p:separator/>
+
+                        <p:commandButton  icon="fa fa-plus-circle" 
+                                          value="Agregar estudios actuales"  action="#{esaEstudioActualController.prepararCrear()}"
+                                          update=":EstudioActualCreateFrm" oncomplete="PF('EstudioActualCreateDialog').show()" >
+                        </p:commandButton>
+                        <p:dataTable id="grdEstudiosActuales" var="item2" value="#{esaEstudioActualController.items}"  scrollable="true" scrollHeight="150" >
+                            <p:column width="30%" headerText="Universidad donde estudia" >
+                                <h:outputText value="#{item2.esaUniversidad}" />
+                            </p:column>
+                            <p:column width="20%" headerText="Número de materias ganadas" >
+                                <h:outputText value="#{item2.esaNumeroMaterias}" />
+                            </p:column>
+                            <p:column width="10%" headerText="No. materias que incluye en PENSUM de la carrera que cursa" >
+                                <h:outputText value="#{item2.esaMateriasPensum}" />
+                            </p:column>
+                            <p:column width="10%" headerText="Tiempo para finalizar sus estudios" >
+                                <h:outputText value="#{item2.esaTiempoFinalizar}" />
+                            </p:column>
+                            <p:column width="10%" headerText="Matricula del curso $" >
+                                <h:outputText value="#{item2.esaMatriculaCurso}"/>
+                            </p:column>
+                            <p:column width="10%" headerText="Cuota mensual" >
+                                <h:outputText value="#{item2.esaCuotaMensual}"/>
+                            </p:column>
+                            <p:column width="12%" style="text-align: center" headerText="Acciones" >
+                                <p:commandLink  process="@this" update="grdEstudiosActuales" >
+                                    <span class="fa fa-trash" />
+                                    <p:collector value="#{item2}" removeFrom="#{esaEstudioActualController.items}" unique="true" />
+                                </p:commandLink>
+                            </p:column>
+                        </p:dataTable>
+                        <p:panelGrid columns="2" styleClass="ui-datagrid-no-border" >
+                            He proporsionado el tiempo para finalizar mis estudios universitario<br/>
+                            y doy fe que la informacion vertida se puede comprobar, caso contrario<br/>
+                            estoy de acuerdo con lo establecido y con las medidas que se tomen<br/>
+                            en caso de comprobarse falsedad en la información proporcionada.<br/>
+                            <p:selectBooleanCheckbox value="#{esaEstudioActualController.aceptacion}" 
+                                                     itemLabel="Acepto las condiciones" 
+                                                     required="true"
+                                                     requiredMessage="Debe de aceptar las condiciones">
+                            </p:selectBooleanCheckbox>
+                        </p:panelGrid>
+
+
+
+                        <p:separator/>OTROS ESTUDIOS <p:separator/>
+                        <p:commandButton  icon="fa fa-plus-circle" 
+                                          value="Agregar otros estudios"  action="#{oteOtroEstudioController.prepararCrear()}"
+                                          update="OtrosEstudiosCreateFrm" oncomplete="PF('OtrosEstudiosCreateDialog').show()" >
+                        </p:commandButton>
+                        <p:dataTable id="grdOtrosEstudiosActuales" var="item3" value="#{oteOtroEstudioController.items}"  scrollable="true" scrollHeight="150" >
+                            <p:column width="30%" headerText="Institución educativa" >
+                                <h:outputText value="#{item3.oteInstitucionEducativa}" />
+                            </p:column>
+                            <p:column width="20%" headerText="Titulo o diploma obtenido" >
+                                <h:outputText value="#{item3.oteTitulo}" />
+                            </p:column>
+                            <p:column width="10%" headerText="Año de estudio" >
+                                <h:outputText value="#{item3.oteAnoEstudio}" />
+                            </p:column>
+                            <p:column width="10%" headerText="Cuota" >
+                                <h:outputText value="#{item3.oteCuota}" />
+                            </p:column>
+
+                            <p:column width="12%" style="text-align: center" headerText="Acciones" >
+                                <p:commandLink  process="@this" update="OtrosEstudiosCreateFrm" >
+                                    <span class="fa fa-trash" />
+                                    <p:collector value="#{item3}" removeFrom="#{oteOtroEstudioController.items}" unique="true" />
+                                </p:commandLink>
+                            </p:column>
+                        </p:dataTable>
+                    </p:tab>
+                    <p:tab title="6. Experiencia laboral">
+                        <p:separator/>Experiencia laboral <p:separator/> 
+
+                        <p:commandButton  icon="fa fa-plus-circle" 
+                                          value="Agregar experiencia laboral"  action="#{exlExperienciaLaboralController.prepararCrear()}"
+                                          update="ExperienciaLaboralCreateFrm" oncomplete="PF('ExperienciaLaboralCreateDialog').show()" >
+                        </p:commandButton>
+                        <p:dataTable id="ExperienciaLabList" var="it" value="#{exlExperienciaLaboralController.items}"  scrollable="true" scrollHeight="150" >
+                            <p:column width="30%" headerText="Institucion o empresa" >
+                                <h:outputText value="#{it.exlEmpresa}" />
+                            </p:column>
+                            <p:column width="20%" headerText="Cargo" >
+                                <h:outputText value="#{it.exlCargo}" />
+                            </p:column>
+                            <p:column width="10%" headerText="Período de trabajo" >
+                                <h:outputText value="#{it.exlPeriodoTrabajo}" />
+                            </p:column>
+                            <p:column width="10%" headerText="Rango salarial" >
+                                <h:outputText value="#{it.exlRangoSalarial}" />
+                            </p:column>
+                            <p:column width="12%" style="text-align: center" headerText="Acciones" >
+                                <p:commandLink  process="@this" update="ExperienciaLabList" >
+                                    <span class="fa fa-trash" />
+                                    <p:collector value="#{it}" removeFrom="#{exlExperienciaLaboralController.items}" unique="true" />
+                                </p:commandLink>
+                            </p:column>
+                        </p:dataTable>
+
+                    </p:tab>
+                    <p:tab title="7. Actividades sociales y de convivencia">
+                        <p:separator/>Actividades sociales y de convivencia <p:separator/> 
+                        <p:panelGrid columns="2" styleClass="ui-datagrid-no-border" >
+
+                            ¿Pertenece usted a algún tipo de asociación,<br/>
+                            cooperativa, voluntariado y/o comité?<br/>
+                            <p:selectOneMenu id="cmbTipoAso" value="#{acsActividadSocialController.selected.acsAsociacion}" style="width:125px" required="true">
+                                <f:selectItem itemLabel="Seleccione" itemValue="" />
+                                <f:selectItem itemLabel="Si" itemValue="1" />
+                                <f:selectItem itemLabel="No" itemValue="0" />
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="Explique las actividades que realiza: " />
+                            <p:inputTextarea value="#{acsActividadSocialController.selected.acsAsociacionExplique}"/>
+
+                            Un Becario tiene que ser una persona aplicada, dedicada y <br/>
+                            muy responsable a su compromiso academico.<br/>
+                            ¿Estaria dispuesto a comprometerse al 100% a tal<br/>
+                            grado que implique dejar de trabajar?
+                            <p:inputText value="#{acsActividadSocialController.selected.acsCompromiso}" />
+
+                            He leído la normativa relacionada al programa de Becas<br/>
+                            FANTEL y estoy de acuerdo con lo establecido<br/>
+                            <p:selectOneMenu id="cmbNormativa" value="#{acsActividadSocialController.selected.acsNormativa}" style="width:125px" required="true">
+                                <f:selectItem itemLabel="Seleccione" itemValue="" />
+                                <f:selectItem itemLabel="Si" itemValue="1" />
+                                <f:selectItem itemLabel="No" itemValue="0" />
+                            </p:selectOneMenu>
+
+
+                        </p:panelGrid>
+
+                    </p:tab>
+                    <p:tab title="8. Anexos">
+                        <p:separator/>Anexos <p:separator/> 
+
+                        <p:commandButton  icon="fa fa-plus-circle"  process="@this"
+                                          value="Agregar anexo"  action="#{anbAnexoBecarioController.prepararCrear()}"
+                                          update="AnexoBecarioCreateFrm" oncomplete="PF('AnexoBecarioCreateDialog').show()" >
+                        </p:commandButton>
+                        <p:dataTable id="AnexosList" var="it" value="#{anbAnexoBecarioController.items}"  scrollable="true" scrollHeight="150" >
+                            <p:column width="30%" headerText="Nombre" >
+                                <h:outputText value="#{it.anbNombre}" />
+                            </p:column>
+                            <p:column width="20%" headerText="Descripción" >
+                                <h:outputText value="#{it.anbDescripcion}" />
+                            </p:column>
+                            <p:column width="10%" headerText="Anexo" >
+                                <h:outputText value="#{it.anbUrl}" />
+                            </p:column>
+                            <p:column width="12%" style="text-align: center" headerText="Acciones" >
+                                <p:commandLink  process="@this" update="ExperienciaLabList" >
+                                    <span class="fa fa-trash" />
+                                    <p:collector value="#{it}" removeFrom="#{anbAnexoBecarioController.items}" unique="true" />
+                                </p:commandLink>
+                            </p:column>
+                        </p:dataTable>
+
+                    </p:tab>
+                </p:tabView>
+
+
+            </p:panel>            
+        </h:form>
+
+
