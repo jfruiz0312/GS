@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="ExperienciaLaboralCreateDlg" widgetVar="ExperienciaLaboralCreateDialog" modal="true" resizable="false" 
+                  appendTo="@(body)" header="Agregar experiencia laboral">
+            <h:form id="ExperienciaLaboralCreateFrm">
+                <p:panelGrid columns="2" >
+
+                    <h:outputText value="Institución o empresa: "/>
+                    <h:inputText value="#{exlExperienciaLaboralController.selected.exlEmpresa}" required="true" requiredMessage="Ingrese institución o empresa " />
+
+                    <h:outputText value="Cargo: "/>
+                    <h:inputText value="#{exlExperienciaLaboralController.selected.exlCargo}" required="true"  />
+
+                    <h:outputText value="Periodo de trabajo: "/>
+                    <h:inputText value="#{exlExperienciaLaboralController.selected.exlPeriodoTrabajo}" required="true" />
+
+                    <h:outputText value="Rango salarial: "/>
+                    <h:inputText value="#{exlExperienciaLaboralController.selected.exlRangoSalarial}" required="true"  />
+
+                </p:panelGrid>
+                <br/><br/>
+
+                <center>
+                    <p:commandButton icon="fa fa-save" value="Guardar"
+                                     actionListener="#{exlExperienciaLaboralController.agregarExperienciaLaboral()}"
+                                     oncomplete="PF('ExperienciaLaboralCreateDialog').hide();" update=":InscripcionBecariosFrm " />                    
+
+                    <p:commandButton icon="fa fa-times-circle" value="Cancelar" oncomplete="PF('ExperienciaLaboralCreateDialog').hide();" immediate="true"/>  
+                </center>
+
+            </h:form>
+        </p:dialog>
+    </ui:composition>
+</html>
+
+

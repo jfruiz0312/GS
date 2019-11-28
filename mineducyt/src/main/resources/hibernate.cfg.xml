@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+        <property name="hibernate.connection.url">jdbc:sqlserver://127.0.0.1:1433;databaseName=SBF_MINEDUCYT</property>
+        <property name="hibernate.connection.username">admin</property>
+        <property name="hibernate.connection.password">admin</property>
+        <property name="hibernate.connection.autoReconnect">true</property>
+        <property name="hibernate.connection.autoReconnectForPools">true</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">false</property>
+        <property name="hibernate.generate_statistics">false</property>
+        <property name="hibernate.use_sql_comments">false</property>
+        <property name="hibernate.connection.autocommit">false</property>
+        <property name="hibernate.order_updates">true</property>
+        <property name="hibernate.order_inserts">true</property>
+        <property name="hibernate.jdbc.batch_size">20</property>
+        <!-- SSL propiedades de conexion -->
+        <property name="hibernate.connection.requireSSL">false</property>
+        <property name="hibernate.connection.verifyServerCertificate">false</property>
+        <property name="hibernate.connection.useSSL">false</property>
+        <!-- pool conexion -->
+        <property name="hibernate.c3p0.max_size">50</property>
+        <property name="hibernate.c3p0.min_size">20</property>
+        <property name="hibernate.c3p0.timeout">300</property>
+        <property name="hibernate.c3p0.max_statements">50</property>
+        <property name="hibernate.c3p0.idle_test_period">3000</property>
+        <property name="hibernate.c3p0.acquire_increment">1</property>
+        <property name="hibernate.c3p0.validate">true</property>       
+        <!-- ENTITIESS -->
+        <mapping class="com.mineducyt.entities.RolRol" />
+        <mapping class="com.mineducyt.entities.AmbAmbito" />
+        <mapping class="com.mineducyt.entities.AncAnexoCuota" />
+        <mapping class="com.mineducyt.entities.AnnAnexoNota" />
+        <mapping class="com.mineducyt.entities.AnpAnexoPlanilla" />
+                      
+        <mapping class="com.mineducyt.entities.UxrUsuarioxrol" />
+        <mapping class="com.mineducyt.entities.UsuUsuario" />   
+        <mapping class="com.mineducyt.entities.IniInscripcionInteresado" /> 
+        <mapping class="com.mineducyt.entities.DepDepartamento" />
+        <mapping class="com.mineducyt.entities.MunMunicipio" />
+        <mapping class="com.mineducyt.entities.UniUniversidad" />
+        <mapping class="com.mineducyt.entities.CarCarrera" />
+        <mapping class="com.mineducyt.entities.PaiPais" /> 
+        <mapping class="com.mineducyt.entities.DapDatoPagoUniversidad" /> 
+        <mapping class="com.mineducyt.entities.BanBanco" /> 
+        <mapping class="com.mineducyt.entities.BecBecario" /> 
+        <mapping class="com.mineducyt.entities.ConConvocatoria" /> 
+        <mapping class="com.mineducyt.entities.EsaEstatusArchivo" /> 
+        <mapping class="com.mineducyt.entities.EscEstatusAcademico" /> 
+        <mapping class="com.mineducyt.entities.SubSubprograma" /> 
+        <mapping class="com.mineducyt.entities.AcsActividadSocial" />
+        <mapping class="com.mineducyt.entities.AnbAnexoBecario" />
+        <mapping class="com.mineducyt.entities.ApoAporte" />
+        <mapping class="com.mineducyt.entities.CtrContrato" />
+        <mapping class="com.mineducyt.entities.DafDatoFamiliar" />
+        <mapping class="com.mineducyt.entities.DeeDependiente" />
+        <mapping class="com.mineducyt.entities.DeuDeuda" />        
+        <mapping class="com.mineducyt.entities.DplDetallePlanilla" />
+        <mapping class="com.mineducyt.entities.PlaPlanilla" />
+        <mapping class="com.mineducyt.entities.RubRubro" />
+        <mapping class="com.mineducyt.entities.DtpDatoPagoBecarios" />
+        <mapping class="com.mineducyt.entities.EntEntrevista" />
+        <mapping class="com.mineducyt.entities.EsaEstudioActual" />
+        <mapping class="com.mineducyt.entities.EsgEstudioGrado" />
+        <mapping class="com.mineducyt.entities.EsoEstudioSocioeconomico" />
+        <mapping class="com.mineducyt.entities.EssEstadoSalud" />
+        <mapping class="com.mineducyt.entities.ExlExperienciaLaboral" />
+        <mapping class="com.mineducyt.entities.InsInformacionSocioeconomica" /> 
+        <mapping class="com.mineducyt.entities.NotNotas" /> 
+        <mapping class="com.mineducyt.entities.AsmAsignacionMaxima" /> 
+        <mapping class="com.mineducyt.entities.NivNivel" /> 
+        <mapping class="com.mineducyt.entities.OteOtroEstudio" />
+        <mapping class="com.mineducyt.entities.PagPagare" />
+        <mapping class="com.mineducyt.entities.RepRecursoPoa" />                
+        <mapping class="com.mineducyt.entities.LxaLiquidacionxaporte" />
+        <mapping class="com.mineducyt.entities.LiqLiquidacion" />
+        <mapping class="com.mineducyt.entities.CuoCuota" />
+        <mapping class="com.mineducyt.entities.PrrPresupuestoRubro" />
+        <mapping class="com.mineducyt.entities.PrePresupuesto" />
+        <mapping class="com.mineducyt.entities.EtrEntrevistador" />
+        <mapping class="com.mineducyt.entities.DenDetalleNotas" />                  
+        <mapping class="com.mineducyt.entities.DprDetallePresupuesto" />                  
+        <mapping class="com.mineducyt.entities.AprAnexoPresupuesto" />
+        <mapping class="com.mineducyt.entities.CopComentariosPresupuesto" />
+        <mapping class="com.mineducyt.entities.OpiOpcionInstitucionProcedencia" />   
+        
+         
+          
+        
+    </session-factory>
+</hibernate-configuration>

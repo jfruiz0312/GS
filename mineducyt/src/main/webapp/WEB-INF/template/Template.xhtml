@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns = "http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <meta http-equiv="pragma" content="no-cache"/>
+            <meta http-equiv="cache-control" content="no-cache"/>
+            <meta http-equiv="expires" content="0"/>
+            <title>MINEDUCYT</title>
+        </f:facet>
+        <h:outputStylesheet library="css" name="default.css"></h:outputStylesheet>
+        <ui:insert name="head"/>
+    </h:head>
+
+    <h:body>
+
+        <div id="top">
+            <ui:insert name="top">
+                <h:form>  
+
+
+
+                    <p:menubar>
+
+                        <p:submenu  label="Seguridad"  style="margin-left: 50px">
+                        </p:submenu>
+                        <p:submenu  label="Becas"  style="margin-left: 50px">
+                            <p:menuitem  value="Inscripción de interesado" outcome="/modulos/becas/inscripcion/Crear.xhtml"  />
+                            <p:menuitem  value="Grid de inscripción de interesados" outcome="/modulos/becas/inscripcion/Listar.xhtml"   />
+                            <p:menuitem  value="Agregar inscripcón de becarios" outcome="/modulos/becas/becarios/Crear.xhtml"   /> 
+                            <p:menuitem  value="Grid de becarios" outcome="/modulos/becas/becarios/Listar.xhtml"   />
+                        </p:submenu>
+                        <p:submenu  label="Finanzas"   style="margin-left: 50px">
+                        </p:submenu>
+                        <p:submenu  label="CRM"   style="margin-left: 50px">
+                        </p:submenu>
+
+
+                    </p:menubar>
+                </h:form>
+
+            </ui:insert>
+        </div>
+
+        <div id="content" class="center_content">
+            <ui:insert name="content">
+
+            </ui:insert>
+        </div>
+        <br/><br/><br/><br/><br/><br/><br/><br/>
+        <div id="bottom" >
+            <ui:insert name="bottom">Copyright 	&copy; 2019
+                <h:outputText value="GRUPO SATELITE " class="H6" style="text-align: center; " />
+            </ui:insert>
+        </div>
+
+        <p:growl id="growl" widgetVar="growl" life="7000" keepAlive="true" showDetail="false" >
+            <p:autoUpdate />
+        </p:growl>
+        <h:form id="confirmDlg"  >
+            <p:confirmDialog  global="true" responsive="true" widgetVar="dlg1" showEffect="fade" hideEffect="scale" closeOnEscape="true" >
+                <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+            </p:confirmDialog>
+        </h:form>
+
+    </h:body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="AnexoBecarioCreateDlg" widgetVar="AnexoBecarioCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="Agregar anexos">
+            <h:form id="AnexoBecarioCreateFrm">
+                <p:panelGrid columns="2" >
+
+                    <h:outputText value="Nombre: "/>
+                    <h:inputText value="#{anbAnexoBecarioController.selected.anbNombre}" required="true" requiredMessage="Ingrese institución educativa " />
+
+                    <h:outputText value="Titulo o diploma obtenido: "/>
+                    <h:inputText value="#{anbAnexoBecarioController.selected.anbDescripcion}" required="true"  />
+
+                    <h:outputText value="Anexo: "/>
+                    <p:panelGrid columns="2"  >
+                        <h:inputText value="#{anbAnexoBecarioController.selected.anbUrl}" required="true" size="50" />
+                        <p:fileUpload value="Buscar" uploadLabel="Buscar" label="Buscar" mode="simple" skinSimple="true"/>
+                        
+                    </p:panelGrid>
+
+
+                </p:panelGrid>
+                <br/><br/>
+
+                <center>
+                    <p:commandButton icon="fa fa-save" value="Guardar"
+                                     actionListener="#{anbAnexoBecarioController.agregarAnexos() }"
+                                     oncomplete="PF('AnexoBecarioCreateDialog').hide();" update=":InscripcionBecariosFrm " />                    
+
+                    <p:commandButton icon="fa fa-times-circle" value="Cancelar" oncomplete="PF('AnexoBecarioCreateDialog').hide();" immediate="true"/>  
+                </center>
+
+            </h:form>
+        </p:dialog>
+    </ui:composition>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns = "http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="./../../../WEB-INF/template/Template.xhtml" >
+
+    <ui:define name="content">
+        <h:form id="InscripcionFrm">
+            <p:panel>
+                <f:facet name="header">
+                    Formulario de inscripción de intereasados
+                </f:facet>
+
+                <p:separator/>Datos generales <p:separator/>
+                <p:panelGrid columns="2" >
+
+                    <p:panelGrid columns="2" >
+                        <h:outputLabel value="Nombres: " for="txtNombres" />
+                        <p:inputText id="txtNombres" value="#{iniInscripcionInteresadoController.selected.iniNombres}"  required="true"/>
+
+                        <h:outputLabel value="Correo electrónico: " for="txtEmail" />
+                        <p:inputText id="txtEmail" value="#{iniInscripcionInteresadoController.selected.iniCorreoElectronico}" required="true" />
+
+                        <h:outputLabel value="Edad: " for="spEdad" />
+                        <p:spinner id="spEdad" value="#{iniInscripcionInteresadoController.selected.iniEdad}" min="1" required="true" />
+
+                        <h:outputLabel value="Lugar de nacimiento: " for="txtLugarNac" />
+                        <p:inputText id="txtLugarNac" value="#{iniInscripcionInteresadoController.selected.iniLugarNacimiento}" />
+
+                        <h:outputLabel value="Celular: " for="txtCelular" />
+                        <p:inputText id="txtCelular" value="#{iniInscripcionInteresadoController.selected.iniCelular}" />
+
+                        <h:outputLabel value="Nivel de ingresos: " for="txtIngresos" />
+                        <p:inputText id="txtIngresos" value="#{iniInscripcionInteresadoController.selected.iniNivelIngreso}" required="true" />
+
+                        <h:outputLabel value="Municipio: " for="cmbMunicipio" />
+                        <p:selectOneMenu  value="#{munMunicipioController.selected}"  required="true" requiredMessage="Seleccione municipio"
+                                          converter="omnifaces.SelectItemsConverter" id="cmbMunicipio"  filter="true" >
+                            <f:selectItem  itemLabel="Seleccione" itemValue="#{null}" />
+                            <f:selectItems value="#{munMunicipioController.itemsFiltered}"
+                                           var="mn"
+                                           itemLabel="#{mn.munNombre}"
+                                           itemValue="#{mn}" />
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+
+                    <p:panelGrid columns="2" >
+                        <h:outputLabel value="Apellidos: " for="txtApelloidos" />
+                        <p:inputText id="txtApelloidos" value="#{iniInscripcionInteresadoController.selected.iniApellidos}" required="true"/>
+
+                        <h:outputLabel value="Sexo: " for="txtSexo" />
+                        <p:selectOneMenu id="txtSexo" value="#{iniInscripcionInteresadoController.selected.iniSexo}" style="width:125px" required="true">
+                            <f:selectItem itemLabel="Seleccione" itemValue="" />
+                            <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+                            <f:selectItem itemLabel="Femenino" itemValue="Femenino" />
+                        </p:selectOneMenu>
+
+                        <h:outputLabel value="No. NIT: " for="txtNit" />
+                        <p:inputText id="txtNit" value="#{iniInscripcionInteresadoController.selected.iniNumeroNit}" />
+
+                        <h:outputLabel value="Teléfono fijo: " for="txtTelFijo" />
+                        <p:inputText id="txtTelFijo" value="#{iniInscripcionInteresadoController.selected.iniTelefonoFijo}" />
+
+                        <h:outputLabel value="Otra forma de contacto: " for="txtOtroContacto" />
+                        <p:inputText id="txtOtroContacto" value="#{iniInscripcionInteresadoController.selected.iniOtroContacto}" />
+
+                        <h:outputLabel value="Departamento " for="cmbDepartamento" />
+                        <p:selectOneMenu  value="#{depDepartamentoController.selected}"  required="true" requiredMessage="Seleccione departamento"
+                                          converter="omnifaces.SelectItemsConverter" id="cmbDepartamento" >
+                            <f:selectItem  itemLabel="Seleccione" itemValue="#{null}" />
+                            <f:selectItems value="#{depDepartamentoController.itemsAvailableSelectOne}"
+                                           var="dp"
+                                           itemLabel="#{dp.depNombre}"
+                                           itemValue="#{dp }" />
+                            <p:ajax event="itemSelect" update="cmbMunicipio" process="@this" listener="#{munMunicipioController.consultarPorIdDepto()}" /> 
+                        </p:selectOneMenu>
+
+                        <h:outputLabel/>
+                        <h:outputLabel/>
+
+                    </p:panelGrid>
+
+                </p:panelGrid>
+
+
+
+                <p:separator/>Información académica <p:separator/>
+                <p:panelGrid columns="2" >
+
+                    <p:panelGrid columns="2" >
+                        <h:outputLabel value="Nivel de estudios: " for="cmbNvlEstudio" />
+                        <p:selectOneMenu  value="#{nivNivelController.selected}"  required="true" requiredMessage="Seleccione nivel de estudio"
+                                          converter="omnifaces.SelectItemsConverter" id="cmbNvlEstudio" >
+                            <f:selectItem  itemLabel="Seleccione" itemValue="#{null}" />
+                            <f:selectItems value="#{nivNivelController.itemsAvailableSelectOne}"
+                                           var="nv"
+                                           itemLabel="#{nv.nivNombre}"
+                                           itemValue="#{nv }" />                         
+                        </p:selectOneMenu>
+
+                        <h:outputLabel value="Sector: " for="cmbSector" />
+                        <p:selectOneMenu id="cmbSector" value="#{iniInscripcionInteresadoController.selected.iniSector}" style="width:125px" required="true">
+                            <f:selectItem itemLabel="Seleccione" itemValue="" />
+                            <f:selectItem itemLabel="Publico" itemValue="Publico" />
+                            <f:selectItem itemLabel="Privado" itemValue="Privado" />
+                        </p:selectOneMenu>
+
+                        <h:outputLabel value="Tipo de aplicación: " for="cmbTipoAplicacion" />
+                        <p:selectOneMenu id="cmbTipoAplicacion" value="#{iniInscripcionInteresadoController.selected.iniTipoAplicacion}" style="width:125px" required="true">
+                            <f:selectItem itemLabel="Seleccione" itemValue="" />
+                            <f:selectItem itemLabel="Inicial" itemValue="Inicial" />
+                            <f:selectItem itemLabel="Otra" itemValue="Otra" />
+                        </p:selectOneMenu>
+
+                        <h:outputLabel value="Nota de PAES: " for="txtNotaPaes" />                   
+                        <p:inputNumber id="txtNotaPaes" value="#{iniInscripcionInteresadoController.selected.iniNotaPaes}" decimalPlaces="2" maxValue="10.00" />
+
+                    </p:panelGrid>
+
+                    <p:panelGrid columns="2" >
+                        <h:outputLabel value="Institución educativa de procedencia: " for="cmbIntitucionProcedencia" />
+                        <p:selectOneMenu  value="#{opiOpcionInstitucionProcedenciaController.selected}"  required="true" 
+                                          requiredMessage="Seleccione institución educativa de procedencia"
+                                          converter="omnifaces.SelectItemsConverter" id="cmbIntitucionProcedencia" filter="true" >
+                            <f:selectItem  itemLabel="Seleccione" itemValue="#{null}" />
+                            <f:selectItems value="#{opiOpcionInstitucionProcedenciaController.itemsAvailableSelectOne}"
+                                           var="iproc"
+                                           itemLabel="#{iproc.opiNombre}"
+                                           itemValue="#{iproc }" />
+                        </p:selectOneMenu>
+
+                        <h:outputLabel value="Año de graduación: " for="txtAnioGraduacion" />
+                        <p:spinner id="txtAnioGraduacion" value="#{iniInscripcionInteresadoController.selected.iniAnoGraducacion}" min="1"  />
+
+                        <h:outputLabel value="Año de PAES: " for="txtAnioPaes" />
+                        <p:spinner id="txtAnioPaes" value="#{iniInscripcionInteresadoController.selected.iniAnoPaes}"  min="1"/>
+
+                        <h:outputLabel/>
+                        <h:outputLabel/>
+
+                    </p:panelGrid>
+
+                </p:panelGrid>
+
+
+
+                <p:separator/>Programa de Estudios a realizar<p:separator/>
+                <p:panelGrid columns="2" >
+
+                    <h:outputLabel value="Universidad donde realizará sus estudios: " for="cmbUPrograma" />
+                    <p:selectOneMenu  value="#{uniUniversidadController.selected}"  required="true" 
+                                      requiredMessage="Seleccione universidad donde realizará sus estudios"
+                                      converter="omnifaces.SelectItemsConverter" id="cmbUPrograma" filter="true" >
+                        <f:selectItem  itemLabel="Seleccione" itemValue="#{null}" />
+                        <f:selectItems value="#{uniUniversidadController.itemsAvailableSelectOne}"
+                                       var="univ"
+                                       itemLabel="#{univ.uniNombre}"
+                                       itemValue="#{univ }" />
+                        <p:ajax event="itemSelect" update="cmbCarrera" process="@this" listener="#{carCarreraController.consultarPorIdUniversidad()}" /> 
+                        <p:ajax event="itemSelect" update="txtTipoPais" process="@this" listener="#{iniInscripcionInteresadoController.paisSegunUniversidad() }" /> 
+                    </p:selectOneMenu>
+
+                    <h:outputLabel value="Carrera exacta a estudiar: " for="cmbCarrera" />
+                    <p:selectOneMenu  value="#{carCarreraController.selected}"  required="true" requiredMessage="Seleccione carrera exacta a estudiar"
+                                      converter="omnifaces.SelectItemsConverter" id="cmbCarrera"  filter="true" >
+                        <f:selectItem  itemLabel="Seleccione" itemValue="#{null}" />
+                        <f:selectItems value="#{carCarreraController.itemsFiltered}"
+                                       var="cr"
+                                       itemLabel="#{cr.carNombre}"
+                                       itemValue="#{cr}" />
+                    </p:selectOneMenu>
+
+                    <h:outputLabel value="País : " for="txtTipoPais" />
+                    <p:inputText id="txtTipoPais" value="#{iniInscripcionInteresadoController.selected.iniPais}" disabled="true" />
+
+
+
+                    Toda la información ingresada esta sujeta a validación por<br/>
+                    parte del Area Técnica del Programa de Becas FANTEL. 
+                    <p:selectBooleanCheckbox value="#{iniInscripcionInteresadoController.aceptacion}" 
+                                             itemLabel="Acepto las condiciones" 
+                                             required="true"
+                                             requiredMessage="Debe de aceptar las condiciones">
+                    </p:selectBooleanCheckbox>
+                </p:panelGrid>
+
+                <p:separator/>
+                <div align="right">
+                    <p:commandButton icon="fa fa-floppy-o" value="Guardar" process="InscripcionFrm" actionListener="#{iniInscripcionInteresadoController.crear()}">
+                     <p:confirm icon="fa fa-exclamation-triangle" header="Confirmación" message="¿Esta seguro que desea continuar?" />
+                    </p:commandButton>
+                    <p:commandButton icon="fa fa-times-circle" value="Cancelar"  />
+                </div>
+                <p:separator/>
+
+
+            </p:panel>            
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+
+
+
+
+
+
+
+
+

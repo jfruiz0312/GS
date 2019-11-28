@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="OtrosEstudiosCreateDlg" widgetVar="OtrosEstudiosCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="Otros estudios">
+            <h:form id="OtrosEstudiosCreateFrm">
+                <p:panelGrid columns="2" >
+
+                    <h:outputText value="Institución educativa: "/>
+                    <h:inputText value="#{oteOtroEstudioController.selected.oteInstitucionEducativa}" required="true" requiredMessage="Ingrese institución educativa " />
+
+                    <h:outputText value="Titulo o diploma obtenido: "/>
+                    <h:inputText value="#{oteOtroEstudioController.selected.oteTitulo}" required="true"  />
+
+                    <h:outputText value="Año de estudio "/>
+                    <h:inputText value="#{oteOtroEstudioController.selected.oteAnoEstudio}" required="true" />
+
+                    <h:outputText value="Cuota: "/>
+                    <h:inputText value="#{oteOtroEstudioController.selected.oteCuota}" required="true"  />
+
+                </p:panelGrid>
+                <br/><br/>
+
+                <center>
+                    <p:commandButton icon="fa fa-save" value="Guardar"
+                                     actionListener="#{oteOtroEstudioController.agregarOtrosEstudios() }"
+                                     oncomplete="PF('OtrosEstudiosCreateDialog').hide();" update=":InscripcionBecariosFrm " />                    
+
+                    <p:commandButton icon="fa fa-times-circle" value="Cancelar" oncomplete="PF('OtrosEstudiosCreateDialog').hide();" immediate="true"/>  
+                </center>
+
+            </h:form>
+        </p:dialog>
+    </ui:composition>
+</html>
+
+
