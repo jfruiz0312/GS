@@ -1,0 +1,39 @@
+
+        <h:form id="formModificarAlumno">
+            <p:dialog id="dlgModificarAlumno" widgetVar="dlgModificarAlumno" resizable="false" showEffect="explode"
+                      hideEffect="explode" modal="true">
+                <p:panelGrid columns="2" style="margin: 0 auto">
+                     <p:outputLabel value="codigo"/>
+                     <p:inputText value="#{alumno2Controller.alumno.codAlumno}"/>
+                    
+                     <p:outputLabel value="carne"/>
+                     <p:inputText value="#{alumno2Controller.alumno.carne}"/>
+
+                            <p:outputLabel value="Nompres"/>
+                            <p:inputText value="#{alumno2Controller.alumno.nombres}"/>
+
+                            <p:outputLabel value="apellidos"/>
+                            <p:inputText value="#{alumno2Controller.alumno.apellidos}"/>
+
+                            <p:outputLabel value="fecha"/>
+                            <p:inputText value="#{alumno2Controller.alumno.fechaNacimiento}"/>
+
+                           
+                       
+                            <p:outputLabel value="foto"/>
+                                <img src="data:image/jpg;base64,#{alumno2Controller.alumno.foto}"/>
+                        </p:column
+                </p:panelGrid>
+                
+                <p:commandButton value="Guardar" actionListener="#{alumno2Controller.modificarAlumno()}" 
+                                 update=":formModificarAlumno:tableDatos" 
+                                 oncomplete="PF('dlgModificarAlumno').hide();">
+
+                </p:commandButton>
+                <p:commandButton value="Cancelar" onclick="PF('dlgModificarAlumno').hide();" >
+
+                </p:commandButton>
+
+            </p:dialog>
+
+        </h:form>
